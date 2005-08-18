@@ -1,0 +1,3 @@
+kanotix-ndiswrapper	usr/sbin/
+*.desktop		usr/share/applnk/Kanotix/Net/
+icons			usr/share

@@ -1,0 +1,119 @@
+#!/bin/bash
+# NdisWrapper configuration script
+# (C) Martin Oehler 2004
+# 2005 modified by Stefan Lippers-Hollmann <s.l-h@gmx.de>
+
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin"
+export PATH
+
+KANOTIXSU=$(type -p kanotix-su)		|| NDISWRAPPER="/usr/bin/kanotix-su"
+MODPROBE=$(type -p modprobe)		|| NDISWRAPPER="/sbin/modprobe"
+NDISWRAPPER=$(type -p ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
+
+for i in "$KANOTIXSU" "$MODPROBE" "$NDISWRAPPER"; do
+	if [ ! -x "$i" ]; then
+		echo "$i: missing, terminate abnormally"
+		exit 999
+	fi
+done
+
+# ensure to be root
+if [ "$UID" -ne 0 ]; then
+	[ -x "$KANOTIXSU" ] && exec "$KANOTIXSU" "$0" "$@"
+	
+	echo Error: You must be root to run this script!
+	exit 1
+fi
+
+# override tool behaviour through distro-defaults
+if [ -r /etc/default/distro ]; then
+	source /etc/default/distro
+else
+	FLL_DISTRO_NAME="Kanotix"
+	FLL_LIVE_USER="knoppix"
+fi
+
+XDIALOG_HIGH_DIALOG_COMPAT=1
+export XDIALOG_HIGH_DIALOG_COMPAT
+
+XDIALOG_FORCE_AUTOSIZE=1
+export XDIALOG_FORCE_AUTOSIZE
+
+TMP="/tmp/ndiswrapper.$$"
+
+DIALOG="dialog"
+[ -n "$DISPLAY" ] && [ -x /usr/bin/Xdialog ] && DIALOG="Xdialog"
+
+BACKTITLE="$(echo "$FLL_DISTRO_NAME" | tr a-z A-Z) NDISWRAPPER TOOL"
+
+# this error is displayed when something is wrong eith the
+# inf file
+inf_error() {
+	$DIALOG --title "$BACKTITLE" --backtitle "ERROR" --msgbox "The selected file is no *.inf file or the *.inf file is invalid, exiting." 12 75;
+}
+
+
+# at first we show the usual disclaimer that the usage of this
+# script could simply destroy everything
+
+# dialog doesn't knows --center
+if [ "$DIALOG" = "dialog" ]; then
+	$DIALOG --title "$BACKTITLE" --backtitle "DISCLAIMER" --msgbox "This is the configuration tool for the ndiswrapper utilities. \n
+Be aware that loading a windows driver file for your wlan \n
+card using this tool could freeze your system. \n 
+\n
+You need matching driver.inf and driver.sys files residing on \n
+a mounted data medium. After the windows drivers have been \n
+successfully loaded via the ndiswrapper, you have to configure \n
+your wlan settings via iwconfig. Future releases of this script \n
+will include this. \n
+\n
+Please send your feedback to <oehler@knopper.net>" 16 75;
+else
+	$DIALOG --center --title "$BACKTITLE" --backtitle "DISCLAIMER" --msgbox "This is the configuration tool for the ndiswrapper utilities. \n
+Be aware that loading a windows driver file for your \n
+wlan card using this tool could freeze your system. \n 
+\n
+You need matching driver.inf and driver.sys files residing on \n
+a mounted data medium. After the windows drivers have been \n
+successfully loaded via the ndiswrapper, you have to configure \n
+your wlan settings via iwconfig. Future releases of this script \n
+will include this. \n
+\n
+Please send your feedback to \n
+<oehler@knopper.net>" 12 75;
+fi
+
+$DIALOG --title "$BACKTITLE" --backtitle "SELECT <DRIVER>.INF FILE" --fselect "$(getent passwd "$FLL_LIVE_USER" | cut -d\: -f6)" 12 75 2>"$TMP"
+read DRIVER_PATH <"$TMP"
+rm -f "$TMP"
+
+test -e "$DRIVER_PATH"		|| { echo "$DRIVER_PATH does not exist, terminate abnormally." >&2;	exit 1; }
+case "$DRIVER_PATH" in 
+	*\.[iI][nN][fF]*)
+		NUM=`grep -c "sys" "$DRIVER_PATH"`
+		if [ "$NUM" -lt 1 ]; then 
+			inf_error; exit 1;
+		fi
+		;;
+	*)
+		inf_error
+		exit 1
+		;;
+esac
+
+# how much lines are in /proc/net/wireless 
+LINES1=`cat /proc/net/wireless | wc -l`
+
+"$NDISWRAPPER" -i "$DRIVER_PATH"
+"$MODPROBE" "$NDISWRAPPER"
+"$NDISWRAPPER" -m
+
+# have we got a new device?
+LINES2=`cat /proc/net/wireless | wc -l`
+
+if [ "$LINES2" -gt "$LINES1" ]; then
+	$DIALOG --title "$BACKTITLE" --backtitle "RESULT" --msgbox "The ndiswrapper module has been loaded. You may configure your wlan card with iwconfig now." 12 75 2>"$TMP"; [ "$?" != "0" ] && return 1; rm -f "$TMP";
+else
+	$DIALOG --title "$BACKTITLE" --backtitle "RESULT" --msgbox "The ndiswrapper module has been loaded but there is no new device. Perhaps NdisWrapper is not working with your driver file." 12 75 2>"$TMP"; [ "$?" != "0" ] && return 1; rm -f "$TMP";
+fi

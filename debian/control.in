@@ -1,0 +1,15 @@
+Source: kanotix-ndiswrapper
+Section: misc
+Priority: optional
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Build-Depends-Indep: @cdbs@
+Standards-Version: 3.6.2
+
+Package: kanotix-ndiswrapper
+Architecture: all
+Depends: ${shlibs:Depends}, dialog, kanotix-su
+Suggests: xdialog, distro-defaults
+Conflicts: knoppix-ndiswrapper
+Description: NdisWrapper GUI for KANOTIX
+ This package provides a simple GUT for NdisWrapper, see
+ http://ndiswrapper.sourceforge.net
