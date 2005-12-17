@@ -1,8 +1,11 @@
-kanotix-ndiswrapper (0.1.8) UNRELEASED; urgency=low
+kanotix-ndiswrapper (0.1.8) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * bump compat level to 5.
+  * clean up debian/control.
+  * remove cdbs auto-update feature.
+  * remove knoppix virtual packages.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 24 Aug 2005 13:46:59 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Dec 2005 02:05:57 +0100
 
 kanotix-ndiswrapper (0.1.7) unstable; urgency=low
 
