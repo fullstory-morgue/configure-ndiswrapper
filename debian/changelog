@@ -1,3 +1,9 @@
+kanotix-ndiswrapper (0.1.9) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Dec 2005 02:08:00 +0100
+
 kanotix-ndiswrapper (0.1.8) unstable; urgency=low
 
   * bump compat level to 5.
