@@ -1,8 +1,9 @@
-kanotix-ndiswrapper (0.1.9) UNRELEASED; urgency=low
+kanotix-ndiswrapper (0.1.9) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * switch to utf-8.
+  * fix lintian errors.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Dec 2005 02:08:00 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed,  1 Nov 2006 00:19:43 +0100
 
 kanotix-ndiswrapper (0.1.8) unstable; urgency=low
 
