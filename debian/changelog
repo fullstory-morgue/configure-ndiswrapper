@@ -1,8 +1,8 @@
-kanotix-ndiswrapper (0.1.10) UNRELEASED; urgency=low
+kanotix-ndiswrapper (0.1.10) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * don't add /usr/X11R6/bin/ to search path.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed,  1 Nov 2006 00:21:09 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Nov 2006 22:44:00 +0100
 
 kanotix-ndiswrapper (0.1.9) unstable; urgency=low
 

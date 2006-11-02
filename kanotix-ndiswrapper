@@ -3,7 +3,7 @@
 # (C) Martin Oehler 2004
 # 2005 modified by Stefan Lippers-Hollmann <s.l-h@gmx.de>
 
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin"
+PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 export PATH
 
 KANOTIXSU=$(type -p kanotix-su)		|| NDISWRAPPER="/usr/bin/kanotix-su"
@@ -117,3 +117,4 @@ if [ "$LINES2" -gt "$LINES1" ]; then
 else
 	$DIALOG --title "$BACKTITLE" --backtitle "RESULT" --msgbox "The ndiswrapper module has been loaded but there is no new device. Perhaps NdisWrapper is not working with your driver file." 12 75 2>"$TMP"; [ "$?" != "0" ] && return 1; rm -f "$TMP";
 fi
+
