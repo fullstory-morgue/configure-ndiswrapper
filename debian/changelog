@@ -1,8 +1,8 @@
-kanotix-ndiswrapper (0.1.11) UNRELEASED; urgency=low
+kanotix-ndiswrapper (0.1.11) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * fix insecure tempfile handling.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  2 Nov 2006 22:45:10 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 10 Nov 2006 14:37:32 +0100
 
 kanotix-ndiswrapper (0.1.10) unstable; urgency=low
 

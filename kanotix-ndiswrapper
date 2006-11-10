@@ -39,7 +39,7 @@ export XDIALOG_HIGH_DIALOG_COMPAT
 XDIALOG_FORCE_AUTOSIZE=1
 export XDIALOG_FORCE_AUTOSIZE
 
-TMP="/tmp/ndiswrapper.$$"
+TMP="$(mktemp -p /tmp/ ndiswrapper-XXXXXXXXXX)"
 
 DIALOG="dialog"
 [ -n "$DISPLAY" ] && [ -x /usr/bin/Xdialog ] && DIALOG="Xdialog"
