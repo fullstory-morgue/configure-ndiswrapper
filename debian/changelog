@@ -1,9 +1,5 @@
-kanotix-ndiswrapper (0.1.12) UNRELEASED; urgency=low
+kanotix-ndiswrapper (0.1.12) unstable; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
-
-  [ Kel Modderman ]
   * Clean bashism's
 
  -- Kel Modderman <kelmo@kanotixguide.org>  Sun, 19 Nov 2006 13:12:26 +1000
