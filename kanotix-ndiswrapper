@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # NdisWrapper configuration script
 # (C) Martin Oehler 2004
 # 2005 modified by Stefan Lippers-Hollmann <s.l-h@gmx.de>
@@ -6,9 +6,9 @@
 PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 export PATH
 
-KANOTIXSU=$(type -p kanotix-su)		|| NDISWRAPPER="/usr/bin/kanotix-su"
-MODPROBE=$(type -p modprobe)		|| NDISWRAPPER="/sbin/modprobe"
-NDISWRAPPER=$(type -p ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
+KANOTIXSU=$(which kanotix-su)		|| NDISWRAPPER="/usr/bin/kanotix-su"
+MODPROBE=$(which modprobe)		|| NDISWRAPPER="/sbin/modprobe"
+NDISWRAPPER=$(which ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
 
 for i in "$KANOTIXSU" "$MODPROBE" "$NDISWRAPPER"; do
 	if [ ! -x "$i" ]; then
@@ -18,7 +18,7 @@ for i in "$KANOTIXSU" "$MODPROBE" "$NDISWRAPPER"; do
 done
 
 # ensure to be root
-if [ "$UID" -ne 0 ]; then
+if [ "$(id -u)" -ne 0 ]; then
 	[ -x "$KANOTIXSU" ] && exec "$KANOTIXSU" "$0" "$@"
 	
 	echo Error: You must be root to run this script!
@@ -27,7 +27,7 @@ fi
 
 # override tool behaviour through distro-defaults
 if [ -r /etc/default/distro ]; then
-	source /etc/default/distro
+	. /etc/default/distro
 else
 	FLL_DISTRO_NAME="Kanotix"
 	FLL_LIVE_USER="knoppix"
