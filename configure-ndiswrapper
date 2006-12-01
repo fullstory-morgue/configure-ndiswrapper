@@ -6,11 +6,11 @@
 PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 export PATH
 
-KANOTIXSU=$(which kanotix-su)		|| NDISWRAPPER="/usr/bin/kanotix-su"
+SU_ME=$(which su-me)		|| NDISWRAPPER="/usr/bin/su-me"
 MODPROBE=$(which modprobe)		|| NDISWRAPPER="/sbin/modprobe"
 NDISWRAPPER=$(which ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
 
-for i in "$KANOTIXSU" "$MODPROBE" "$NDISWRAPPER"; do
+for i in "$SU_ME" "$MODPROBE" "$NDISWRAPPER"; do
 	if [ ! -x "$i" ]; then
 		echo "$i: missing, terminate abnormally"
 		exit 999
@@ -19,7 +19,7 @@ done
 
 # ensure to be root
 if [ "$(id -u)" -ne 0 ]; then
-	[ -x "$KANOTIXSU" ] && exec "$KANOTIXSU" "$0" "$@"
+	[ -x "$SU_ME" ] && exec "$SU_ME" "$0" "$@"
 	
 	echo Error: You must be root to run this script!
 	exit 1

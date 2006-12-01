@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[de]=Ndiswrapper konfigurieren
 Comment[es]=Configuración de la Ndiswrapper
-Exec=kanotix-su /usr/sbin/kanotix-ndiswrapper
+Exec=su-me /usr/sbin/configure-ndiswrapper
 Icon=connect_creating
 Name[de]=Ndiswrapper konfigurieren
 Name[es]=Configuración de la Ndiswrapper
