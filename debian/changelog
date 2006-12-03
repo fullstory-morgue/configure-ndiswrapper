@@ -1,12 +1,13 @@
-configure-ndiswrapper (0.1.13) UNRELEASED; urgency=low
+configure-ndiswrapper (0.1.13) unstable; urgency=low
 
-  * NOT RELEASED YET
-  * move package to contrib/net.
-
+  [ Joaquim Boura ]
   * Initial sidux version
   * Files renamed
 
- -- Joaquim Boura <x-un-i@sidux.com>  Fri,  1 Dec 2006 23:25:29 +0100
+  [ Stefan Lippers-Hollmann ]
+  * tweak debian/control.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun,  3 Dec 2006 01:59:39 +0100
 
 kanotix-ndiswrapper (0.1.12) unstable; urgency=low
 
