@@ -1,3 +1,9 @@
+configure-ndiswrapper (0.1.15) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 16:25:54 +0100
+
 configure-ndiswrapper (0.1.14) unstable; urgency=low
 
   * fix defaults for sidux.
