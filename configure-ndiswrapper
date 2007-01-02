@@ -6,7 +6,7 @@
 PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 export PATH
 
-SU_ME=$(which su-me)		|| NDISWRAPPER="/usr/bin/su-me"
+SU_ME=$(which su-me)			|| NDISWRAPPER="/usr/bin/su-me"
 MODPROBE=$(which modprobe)		|| NDISWRAPPER="/sbin/modprobe"
 NDISWRAPPER=$(which ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
 
@@ -29,8 +29,8 @@ fi
 if [ -r /etc/default/distro ]; then
 	. /etc/default/distro
 else
-	FLL_DISTRO_NAME="Kanotix"
-	FLL_LIVE_USER="knoppix"
+	FLL_DISTRO_NAME="sidux"
+	FLL_LIVE_USER="sidux"
 fi
 
 XDIALOG_HIGH_DIALOG_COMPAT=1
