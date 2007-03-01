@@ -8,7 +8,6 @@ Standards-Version: 3.7.2
 Package: configure-ndiswrapper
 Architecture: all
 Depends: ${shlibs:Depends}, dialog, su-me
-Conflicts: kanotix-ndiswrapper
 Suggests: xdialog, distro-defaults
 Description: NdisWrapper GUI for sidux
  This package provides a simple GUT for NdisWrapper, see
