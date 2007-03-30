@@ -1,12 +1,12 @@
-configure-ndiswrapper (0.1.16) UNRELEASED; urgency=low
-
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
+configure-ndiswrapper (0.1.16) unstable; urgency=low
 
   [ Joaquim Boura ]
   * moving to xdg-menus
 
- -- Joaquim Boura <x-un-i@sidux.com>  Wed, 28 Mar 2007 22:41:45 +0200
+  [ Stefan Lippers-Hollmann ]
+  * depend on sidux-xdg.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 30 Mar 2007 23:04:48 +0200
 
 configure-ndiswrapper (0.1.15) unstable; urgency=low
 
