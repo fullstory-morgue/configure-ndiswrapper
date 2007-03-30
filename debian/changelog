@@ -1,8 +1,8 @@
-configure-ndiswrapper (0.1.17) UNRELEASED; urgency=low
+configure-ndiswrapper (0.1.17) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * fix *.desktop location.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 30 Mar 2007 23:09:21 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 31 Mar 2007 01:41:32 +0200
 
 configure-ndiswrapper (0.1.16) unstable; urgency=low
 
