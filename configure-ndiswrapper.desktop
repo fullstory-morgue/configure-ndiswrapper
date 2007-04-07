@@ -4,7 +4,7 @@ Type=Application
 
 Exec=su-me /usr/sbin/configure-ndiswrapper
 
-Icon=connect_creating
+Icon=sidux-ndiswrapper
 Name[de]=Ndiswrapper konfigurieren
 Name[es]=Configuración de la Ndiswrapper
 Name=ndiswrapper configuration
