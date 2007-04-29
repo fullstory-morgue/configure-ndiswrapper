@@ -1,3 +1,9 @@
+configure-ndiswrapper (0.1.20) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 30 Apr 2007 00:52:13 +0200
+
 configure-ndiswrapper (0.1.19) unstable; urgency=low
 
   * new icon sidux-ndiswrapper
