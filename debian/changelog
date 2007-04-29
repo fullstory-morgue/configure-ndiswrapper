@@ -1,9 +1,5 @@
-configure-ndiswrapper (0.1.19) UNRELEASED; urgency=low
+configure-ndiswrapper (0.1.19) unstable; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
-
-  [ Joaquim Boura ]
   * new icon sidux-ndiswrapper
 
  -- Joaquim Boura <x-un-i@sidux.com>  Sun, 29 Apr 2007 18:43:00 +0200
