@@ -105,8 +105,8 @@ esac
 LINES1=`cat /proc/net/wireless | wc -l`
 
 "$NDISWRAPPER" -i "$DRIVER_PATH"
-"$MODPROBE" "$NDISWRAPPER"
-"$NDISWRAPPER" -m
+"$MODPROBE" ndiswrapper
+"$NDISWRAPPER" -ma
 
 # have we got a new device?
 LINES2=`cat /proc/net/wireless | wc -l`
