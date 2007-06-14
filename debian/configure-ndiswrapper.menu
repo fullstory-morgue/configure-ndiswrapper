@@ -1,7 +1,7 @@
 ?package(configure-ndiswrapper):needs="text" \
 	section="Apps/System" \
 	hints="sidux,Config" \
-	title="Configure NisWrapper" \
+	title="Configure NdisWrapper" \
 	icon32x32="/usr/share/pixmaps/configure-ndiswrapper.xpm" \
 	icon16x16="/usr/share/pixmaps/configure-ndiswrapper-16.xpm" \
 	command="/usr/sbin/configure-ndiswrapper"
