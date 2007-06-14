@@ -1,3 +1,9 @@
+configure-ndiswrapper (0.1.22) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 14 Jun 2007 17:03:41 +0200
+
 configure-ndiswrapper (0.1.21) unstable; urgency=low
 
   * Remove su-me from .desktop file.
