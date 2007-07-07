@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.0.3) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.3) unstable; urgency=low
 
   * Use better check for existance of ndiswrapper module.
   * Write modprobe file on successful installation.
