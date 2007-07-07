@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.0.4) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 08 Jul 2007 00:27:43 +0200
+
 configure-ndiswrapper (1.0.3) unstable; urgency=low
 
   * Use better check for existance of ndiswrapper module.
