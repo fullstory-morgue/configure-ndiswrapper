@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.0.5) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 08 Jul 2007 01:40:22 +0200
+
 configure-ndiswrapper (1.0.4) unstable; urgency=low
 
   * Support for reloading module.
