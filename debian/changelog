@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.0.4) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.4) unstable; urgency=low
 
   * Support for reloading module.
 
