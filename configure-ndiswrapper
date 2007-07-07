@@ -98,15 +98,15 @@ EOF
 
 ###---------------------------------------------------------------###
 
-source ssft.sh				|| error "ssft"
+source ssft.sh					|| error "ssft"
 
 # the dialog frontend is woeful for this purpose
 [[ ${DISPLAY} ]] || SSFT_FRONTEND=text
 : ${SSFT_FRONTEND:=$(ssft_choose_frontend)}
 
-! ((UID))				|| error "root"
-which ndiswrapper >/dev/null		|| error "ndis"
-modprobe -q -i ndiswrapper 2>/dev/null	|| error "kmod"
+! ((UID))					|| error "root"
+which ndiswrapper >/dev/null			|| error "ndis"
+[[ -f $(modinfo -F filename ndiswrapper) ]]	|| error "kmod"
 
 ###---------------------------------------------------------------###
 
@@ -130,6 +130,7 @@ while true; do
 								for driver in ${SSFT_RESULT}; do
 									ndiswrapper -r "${driver}" || error "undo"
 								done
+								ndiswrapper -ma
 							fi
 						else
 							error "abort"
@@ -167,13 +168,21 @@ while true; do
 	[[ ${NDIS_DRIVER} =~ '^(.*/)?(.+)\.[Ii][Nn][Ff]$' ]] || error "regx"
 	NDIS_DRIVER_NAME=$(tr 'A-Z' 'a-z' <<< ${BASH_REMATCH[2]})
 
-	[[ " ${NDIS_INSTALLED_DRIVERS[@]} " == *" ${NDIS_DRIVER_NAME} "* ]] && error "nodo"
+	if [[ " ${NDIS_INSTALLED_DRIVERS[@]} " == *" ${NDIS_DRIVER_NAME} "* ]]; then
+		if ssft_yesno "driver already installed" \
+			"The driver you chose is already installed, return to main menu?"; then
+			continue
+		else
+			error "abort"
+		fi
+	fi
 
 	NDIS_INSTALL_RESULT=$(ndiswrapper -i ${NDIS_DRIVER} 2>&1)
 	if [[ ${?} -eq 0 ]]; then
 		lsmod | grep -q -w ndiswrapper && error "used"
 		NDIS_MODPROBE_RESULT=$(modprobe ndiswrapper 2>&1)
 		if [[ ${?} -eq 0 ]]; then
+			ndiswrapper -ma
 			ssft_display_message "ndiswrapper installed" \
 				"The ndiswrapper kernel module is configured and ready to use."
 			break
