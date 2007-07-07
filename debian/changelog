@@ -1,9 +1,15 @@
-configure-ndiswrapper (1.0.0) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.0) unstable; urgency=low
 
+  [ Kel Modderman ]
   * Rewrite configure-ndiswrapper using ssft based dialog abstraction.
   * Update debian/copyright.
 
- -- Kel Modderman <kel@otaku42.de>  Sat, 07 Jul 2007 22:55:27 +1000
+  [ Stefan Lippers-Hollmann ]
+  * the packaging was done from scratch (using cdbs) in december 2004, update
+    debian/copyright accordingly.
+  * follow upstream's spelling in debian/control.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 07 Jul 2007 15:10:37 +0200
 
 configure-ndiswrapper (0.1.21) unstable; urgency=low
 

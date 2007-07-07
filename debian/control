@@ -10,6 +10,6 @@ Package: configure-ndiswrapper
 Architecture: all
 Depends: su-me, sidux-xdg, ssft
 Suggests: zenity | kdialog, distro-defaults
-Description: NdisWrapper GUI for sidux
- This package provides a simple GUI for NdisWrapper driver installation, see
+Description: NDISwrapper GUI for sidux
+ This package provides a simple GUI for NDISwrapper driver installation, see
  http://ndiswrapper.sourceforge.net
