@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 
-Exec=/usr/sbin/configure-ndiswrapper
+Exec=su-me /usr/sbin/configure-ndiswrapper
 
 Icon=sidux-ndiswrapper
 Name[de]=Ndiswrapper konfigurieren

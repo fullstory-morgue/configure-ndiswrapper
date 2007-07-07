@@ -1,9 +1,11 @@
 This package was debianized by Martin Oehler <oehler@knopper.net> on
 Sat, 14 Aug 2004 20:28:33 +0200.
 
-It was downloaded from http://knopper.net/knoppix/
+The original source can always be found at:
+	http://developer.berlios.de/projects/fullstory
 
-Upstream Author: Martin Oehler <oehler@knopper.net>
-                 icons: (C) 2007 cathbard <cathbard@gmail.com>
+Copyright Holders:
+	(C) 2007 Kel Modderman <kel@otaku42.de>
+	(C) 2007 cathbard <cathbard@gmail.com> (icons)
 
-Copyright: GPL, see /usr/share/common-licenses
+Copyright: GPLv2, see /usr/share/common-licenses/GPL-2

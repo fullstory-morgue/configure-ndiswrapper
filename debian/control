@@ -2,13 +2,14 @@ Source: configure-ndiswrapper
 Section: net
 Priority: optional
 Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Uploaders: Kel Modderman <kel@otaku42.de>
 Build-Depends: cdbs, debhelper (>= 5), imagemagick
 Standards-Version: 3.7.2
 
 Package: configure-ndiswrapper
 Architecture: all
-Depends: ${shlibs:Depends}, dialog, su-me, sidux-xdg
-Suggests: xdialog, distro-defaults
+Depends: su-me, sidux-xdg, ssft
+Suggests: zenity | kdialog, distro-defaults
 Description: NdisWrapper GUI for sidux
- This package provides a simple GUT for NdisWrapper, see
+ This package provides a simple GUI for NdisWrapper driver installation, see
  http://ndiswrapper.sourceforge.net

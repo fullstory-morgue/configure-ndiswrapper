@@ -1,119 +1,166 @@
-#!/bin/sh
-# NdisWrapper configuration script
-# (C) 2004 Martin Oehler
-# (C) 2005-2007 modified by Stefan Lippers-Hollmann <s.l-h@gmx.de>
+#!/bin/bash
+#
+# Copyright:	(C) 2007 Kel Modderman <kel@otaku42.de>
+# License:	GPLv2
+#
+# Provide dialog frontend to ndis driver installation via ssft
 
-PATH="/bin:/sbin:/usr/bin:/usr/sbin"
-export PATH
+###---------------------------------------------------------------###
 
-SU_ME=$(which su-me)			|| NDISWRAPPER="/usr/bin/su-me"
-MODPROBE=$(which modprobe)		|| NDISWRAPPER="/sbin/modprobe"
-NDISWRAPPER=$(which ndiswrapper)	|| NDISWRAPPER="/usr/sbin/ndiswrapper"
+error() {
+	local ETIT="Error"
+	local EMSG="An unknown error has occurred, aborting"
+	local ERET=999
 
-for i in "$SU_ME" "$MODPROBE" "$NDISWRAPPER"; do
-	if [ ! -x "$i" ]; then
-		echo "$i: missing, terminate abnormally"
-		exit 999
-	fi
-done
+	case "${1}" in
+		ssft)
+			echo "ssft not installed"
+			echo "------------------"
+			echo ""
+			echo "The 'ssft' package must be installed."
+			echo ""
+			echo "Aborting."
+			echo ""
+			exit 2
+			;;
+		root)
+			ETIT="must be root!"
+			EMSG="You must be root to use this program, aborting."
+			ERET=3
+			;;
+		ndis)
+			ETIT="ndiswrapper not found!"
+			EMSG="The 'ndiswrapper' command was not found in PATH, aborting."
+			ERET=4
+			;;
+		kmod)
+			ETIT="ndiswrapper module not installed"
+			EMSG="The 'ndiswrapper' kernel module is not installed, aborting."
+			ERET=5
+			;;
+		driv)
+			ETIT="driver installation failed"
+			EMSG="Failed to install a ndis driver, aborting."
+			ERET=6
+			;;
+		regx)
+			ETIT="regexp error"
+			EMSG="Unable to determine ndis driver name with regular expression"
+			ERET=7
+			;;
+		nodo)
+			ETIT="driver already installed"
+			EMSG="The driver you chose is already installed, aborting."
+			ERET=8
+			;;
+		undo)
+			ETIT="ndiswrapper failure"
+			EMSG="ndiswrapper failed to remove driver that failed installation, aborting."
+			ERET=9
+			;;
+		abort)
+			ETIT="aborted installation"
+			EMSG="Aborting ndiswrapper installation"
+			ERET=255
+			;;
+	esac
 
-# ensure to be root
-if [ "$(id -u)" -ne 0 ]; then
-	[ -x "$SU_ME" ] && exec "$SU_ME" "$0" "$@"
-	
-	echo Error: You must be root to run this script!
-	exit 1
-fi
+	ssft_display_error "${ETIT}" "${EMSG}"
 
-# override tool behaviour through distro-defaults
-if [ -r /etc/default/distro ]; then
-	. /etc/default/distro
-else
-	FLL_DISTRO_NAME="sidux"
-	FLL_LIVE_USER="sidux"
-fi
-
-XDIALOG_HIGH_DIALOG_COMPAT=1
-export XDIALOG_HIGH_DIALOG_COMPAT
-
-XDIALOG_FORCE_AUTOSIZE=1
-export XDIALOG_FORCE_AUTOSIZE
-
-TMP="$(mktemp -p /tmp/ ndiswrapper-XXXXXXXXXX)"
-
-DIALOG="dialog"
-[ -n "$DISPLAY" ] && [ -x /usr/bin/Xdialog ] && DIALOG="Xdialog"
-
-BACKTITLE="$(echo "$FLL_DISTRO_NAME" | tr a-z A-Z) NDISWRAPPER TOOL"
-
-# this error is displayed when something is wrong eith the
-# inf file
-inf_error() {
-	$DIALOG --title "$BACKTITLE" --backtitle "ERROR" --msgbox "The selected file is no *.inf file or the *.inf file is invalid, exiting." 12 75;
+	exit "${ERET}"
 }
 
+usage() {
+	cat <<EOF
+Navigate the file selection dialog to a directory
+containing Windows drivers for your device and
+select the .inf or .INF file.
 
-# at first we show the usual disclaimer that the usage of this
-# script could simply destroy everything
+Important: Not all Windows drivers are tested / stable.
+If the Windows driver that you use is problematic, try
+alternate Windows drivers that others have tested,
+especially those in listed at the ndiswrapper wiki:
 
-# dialog doesn't knows --center
-if [ "$DIALOG" = "dialog" ]; then
-	$DIALOG --title "$BACKTITLE" --backtitle "DISCLAIMER" --msgbox "This is the configuration tool for the ndiswrapper utilities. \n
-Be aware that loading a windows driver file for your wlan \n
-card using this tool could freeze your system. \n 
-\n
-You need matching driver.inf and driver.sys files residing on \n
-a mounted data medium. After the windows drivers have been \n
-successfully loaded via the ndiswrapper, you have to configure \n
-your wlan settings via iwconfig. Future releases of this script \n
-will include this." 16 75;
-else
-	$DIALOG --center --title "$BACKTITLE" --backtitle "DISCLAIMER" --msgbox "This is the configuration tool for the ndiswrapper utilities. \n
-Be aware that loading a windows driver file for your \n
-wlan card using this tool could freeze your system. \n 
-\n
-You need matching driver.inf and driver.sys files residing on \n
-a mounted data medium. After the windows drivers have been \n
-successfully loaded via the ndiswrapper, you have to configure \n
-your wlan settings via iwconfig. Future releases of this script \n
-will include this." 12 75;
-fi
+  http://ndiswrapper.sourceforge.net/
 
-$DIALOG --title "$BACKTITLE" --backtitle "SELECT <DRIVER>.INF FILE" --fselect "$(getent passwd "$FLL_LIVE_USER" | cut -d\: -f6)" 12 75 2>"$TMP"
-read DRIVER_PATH <"$TMP"
-rm -f "$TMP"
+Always, try Windows XP drivers and if Windows XP drivers
+are not available, try Windows 2000/2003 drivers. Windows
+Vista drivers are not supported (yet) - using Windows
+Vista driver will result in many ‘unknown symbol’ error
+messages when loading ndiswrapper.
+EOF
+}
 
-if ! test -e "$DRIVER_PATH"; then
-	echo "$DRIVER_PATH does not exist, terminate abnormally." >&2
-	exit 1
-fi
+###---------------------------------------------------------------###
 
-case "$DRIVER_PATH" in 
-	*\.[iI][nN][fF]*)
-		NUM=`grep -c "sys" "$DRIVER_PATH"`
-		if [ "$NUM" -lt 1 ]; then 
-			inf_error; exit 1;
+source ssft.sh				|| error "ssft"
+
+# the dialog frontend is woeful for this purpose
+[[ ${DISPLAY} ]] || SSFT_FRONTEND=text
+: ${SSFT_FRONTEND:=$(ssft_choose_frontend)}
+
+! ((UID))				|| error "root"
+which ndiswrapper >/dev/null		|| error "ndis"
+modprobe -q -i ndiswrapper 2>/dev/null	|| error "kmod"
+
+###---------------------------------------------------------------###
+
+ssft_display_message "Usage" "$(usage)"
+
+while true; do
+	unset NDIS_DRIVER
+
+	if ssft_file_selection "Select driver" "Select Windows .inf driver to install."; then
+		case "${SSFT_RESULT}" in
+			*\.[Ii][Nn][Ff])
+				NDIS_DRIVER="${SSFT_RESULT}"
+				;;
+			*)
+				ssft_display_error "Invalid driver" \
+					"Invalid Windows driver filename. Not an .inf or .INF file."
+				ssft_yesno "try again" \
+					"Would you like another attempt at configuring ndiswrapper?" && continue
+				error "abort"
+				;;
+		esac
+	else
+		error "abort"
+	fi
+
+	[[ ${NDIS_DRIVER} =~ '^(.*/)?(.+)\.[Ii][Nn][Ff]$' ]] || error "regx"
+	NDIS_DRIVER_NAME=$(tr 'A-Z' 'a-z' <<< ${BASH_REMATCH[2]})
+
+	[[ -d "/etc/ndiswrapper/${NDIS_DRIVER_NAME}" ]] && error "nodo"
+
+	NDIS_INSTALL_RESULT=$(ndiswrapper -i ${NDIS_DRIVER} 2>&1)
+	if [[ ${?} -eq 0 ]]; then
+		NDIS_MODPROBE_RESULT=$(modprobe ndiswrapper 2>&1)
+		if [[ ${?} -eq 0 ]]; then
+			ssft_display_message "ndiswrapper installed" \
+				"The ndiswrapper kernel module is configured and ready to use."
+			break
+		else
+			ssft_display_emsg "modprobe failed" "${NDIS_MODPROBE_RESULT}"
+
+			if [[ -d "/etc/ndiswrapper/${NDIS_DRIVER_NAME}" ]]; then
+				ndiswrapper -r "${NDIS_DRIVER_NAME}" || error "undo"
+			fi
+
+			ssft_yesno "try again" \
+				"Would you like another attempt at configuring ndiswrapper?" && continue
+			error "abort"
 		fi
-		;;
-	*)
-		inf_error
-		exit 1
-		;;
-esac
+	else
+		ssft_display_emsg "ndiswrapper failed" "${NDIS_INSTALL_RESULT}"
 
-# how much lines are in /proc/net/wireless 
-LINES1=`cat /proc/net/wireless | wc -l`
+		if [[ -d "/etc/ndiswrapper/${NDIS_DRIVER_NAME}" ]]; then
+			ndiswrapper -r "${NDIS_DRIVER_NAME}" || error "undo"
+		fi
 
-"$NDISWRAPPER" -i "$DRIVER_PATH"
-"$MODPROBE" ndiswrapper
-"$NDISWRAPPER" -ma
+		ssft_yesno "try again" \
+			"Would you like another attempt at configuring ndiswrapper?" && continue
+		error "abort"
+	fi		
+done
 
-# have we got a new device?
-LINES2=`cat /proc/net/wireless | wc -l`
-
-if [ "$LINES2" -gt "$LINES1" ]; then
-	$DIALOG --title "$BACKTITLE" --backtitle "RESULT" --msgbox "The ndiswrapper module has been loaded. You may configure your wlan card with iwconfig now." 12 75 2>"$TMP"; [ "$?" != "0" ] && return 1; rm -f "$TMP";
-else
-	$DIALOG --title "$BACKTITLE" --backtitle "RESULT" --msgbox "The ndiswrapper module has been loaded but there is no new device. Perhaps NdisWrapper is not working with your driver file." 12 75 2>"$TMP"; [ "$?" != "0" ] && return 1; rm -f "$TMP";
-fi
-
+exit 0

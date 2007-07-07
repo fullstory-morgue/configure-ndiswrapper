@@ -1,4 +1,4 @@
-?package(configure-ndiswrapper):needs="text" \
+?package(configure-ndiswrapper):needs="X11" \
 	section="Apps/System" \
 	hints="sidux,Config" \
 	title="Configure NdisWrapper" \
