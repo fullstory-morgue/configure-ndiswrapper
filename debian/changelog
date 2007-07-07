@@ -1,8 +1,8 @@
-configure-ndiswrapper (1.0.1) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.1) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * install manpages again.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 07 Jul 2007 15:16:52 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 07 Jul 2007 16:10:22 +0200
 
 configure-ndiswrapper (1.0.0) unstable; urgency=low
 
