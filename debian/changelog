@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.0.3) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 07 Jul 2007 23:48:08 +0200
+
 configure-ndiswrapper (1.0.2) unstable; urgency=low
 
   * Add support for removal of previously installed drivers.
