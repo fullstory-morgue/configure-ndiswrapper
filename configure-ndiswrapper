@@ -83,6 +83,16 @@ select the .inf or .INF file.
 EOF
 }
 
+warning() {
+	cat <<EOF
+The ndiswrapper module is in use, do you want to 
+reconfigure the driver?
+
+WARNING: this could break your current network
+connection or cause instability in some cases!
+EOF
+}
+
 ###---------------------------------------------------------------###
 
 source ssft.sh					|| error "ssft"
@@ -131,6 +141,14 @@ while true; do
 		done
 	fi
 
+	if lsmod | grep -q -w ndiswrapper; then
+		if ssft_yesno "unload ndiswrapper driver" "$(warning)"; then
+			modprobe -r ndiswrapper
+		else
+			error "used"
+		fi
+	fi
+
 	ssft_display_message "Usage" "$(usage)"
 
 	unset NDIS_DRIVER
@@ -166,7 +184,6 @@ while true; do
 
 	NDIS_INSTALL_RESULT=$(ndiswrapper -i ${NDIS_DRIVER} 2>&1)
 	if [[ ${?} -eq 0 ]]; then
-		lsmod | grep -q -w ndiswrapper && error "used"
 		NDIS_MODPROBE_RESULT=$(modprobe ndiswrapper 2>&1)
 		if [[ ${?} -eq 0 ]]; then
 			ndiswrapper -ma
