@@ -108,7 +108,7 @@ which ndiswrapper >/dev/null			|| error "ndis"
 ###---------------------------------------------------------------###
 
 while true; do
-	NDIS_INSTALLED_DRIVERS=( $(ndiswrapper -l | awk '/^.+[ \t]*:.*/{ print $1 }') )
+	NDIS_INSTALLED_DRIVERS=( $(ndiswrapper -l | awk '/driver installed/{ print $1 }') )
 
 	if [[ ${NDIS_INSTALLED_DRIVERS[@]} ]]; then
 		while [[ ${#NDIS_INSTALLED_DRIVERS[@]} -gt 0 ]]; do
