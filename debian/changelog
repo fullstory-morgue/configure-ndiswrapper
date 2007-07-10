@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.0.5) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.5) unstable; urgency=low
 
   * Fix awk usage in NDIS_INSTALLED_DRIVERS array.
   * Force LC_ALL=C for ndiswrapper -l command.
