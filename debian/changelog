@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.0.6) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 10 Jul 2007 03:37:08 +0200
+
 configure-ndiswrapper (1.0.5) unstable; urgency=low
 
   * Fix awk usage in NDIS_INSTALLED_DRIVERS array.
