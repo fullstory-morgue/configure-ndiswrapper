@@ -97,8 +97,13 @@ EOF
 
 source ssft.sh					|| error "ssft"
 
-# the dialog frontend is woeful for this purpose
-[[ ${DISPLAY} ]] || SSFT_FRONTEND=text
+if [[ ${DISPLAY} ]]; then
+	which kdialog >/dev/null && SSFT_FRONTEND=kdialog
+else
+	# the dialog frontend is woeful for this purpose
+	SSFT_FRONTEND=text
+fi
+
 : ${SSFT_FRONTEND:=$(ssft_choose_frontend)}
 
 ! ((UID))					|| error "root"
