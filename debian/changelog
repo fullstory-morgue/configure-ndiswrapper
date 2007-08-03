@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.0.6) UNRELEASED; urgency=low
+configure-ndiswrapper (1.0.6) unstable; urgency=low
 
   * manually prefer kdialog if installed.
 
