@@ -1,8 +1,9 @@
 configure-ndiswrapper (1.0.7) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
+  * add VCS control headers.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 03 Aug 2007 04:00:45 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 11 Sep 2007 20:08:33 +0200
 
 configure-ndiswrapper (1.0.6) unstable; urgency=low
 
