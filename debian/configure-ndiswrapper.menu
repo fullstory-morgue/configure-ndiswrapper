@@ -1,5 +1,5 @@
 ?package(configure-ndiswrapper):needs="X11" \
-	section="Apps/System" \
+	section="Applications/System/Administration" \
 	hints="sidux,Config" \
 	title="Configure NdisWrapper" \
 	icon32x32="/usr/share/pixmaps/configure-ndiswrapper.xpm" \
