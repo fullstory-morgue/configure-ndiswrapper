@@ -1,8 +1,12 @@
 configure-ndiswrapper (1.0.9) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 08 Dec 2007 16:47:22 +0100
+  [ Joaquim Boura ]
+  * Translation thanks to RoEn
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Tue, 18 Dec 2007 13:22:09 +0100
 
 configure-ndiswrapper (1.0.8) unstable; urgency=low
 

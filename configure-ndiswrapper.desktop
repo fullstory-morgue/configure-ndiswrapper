@@ -6,10 +6,13 @@ Exec=su-me /usr/sbin/configure-ndiswrapper
 
 Icon=sidux-ndiswrapper
 Name[de]=Ndiswrapper konfigurieren
+Name[ru]=Конфигурация ndiswrapper
 Name[es]=Configuración de la Ndiswrapper
 Name=ndiswrapper configuration
 Comment[de]=Ndiswrapper konfigurieren
+Comment[ru]=Конфигурация ndiswrapper
 Comment[es]=Configuración de la Ndiswrapper
+Name[pt]=Configuração do Ndiswrapper
+Name[pt_BR]=Configuração do Ndiswrapper
 
 Categories=sidux;Net
-
