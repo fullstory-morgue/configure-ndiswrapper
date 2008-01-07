@@ -10,7 +10,7 @@ Vcs-Browser: http://svn.berlios.de/wsvn/fullstory/configure-ndiswrapper/trunk/
 
 Package: configure-ndiswrapper
 Architecture: all
-Depends: su-me, sidux-xdg, ssft
+Depends: ssft, menu
 Suggests: zenity | kdialog, distro-defaults
 Description: NDISwrapper GUI for sidux
  This package provides a simple GUI for NDISwrapper driver installation, see

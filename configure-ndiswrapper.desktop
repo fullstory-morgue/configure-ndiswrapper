@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Type=Application
 
-Exec=su-me /usr/sbin/configure-ndiswrapper
+Exec=su-to-root -X -c /usr/sbin/configure-ndiswrapper
 
 Icon=sidux-ndiswrapper
 Name[de]=Ndiswrapper konfigurieren
@@ -15,4 +15,4 @@ Comment[es]=Configuración de la Ndiswrapper
 Name[pt]=Configuração do Ndiswrapper
 Name[pt_BR]=Configuração do Ndiswrapper
 
-Categories=sidux;Net
+Categories=Settings

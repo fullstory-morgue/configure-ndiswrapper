@@ -4,4 +4,4 @@
 	title="Configure NdisWrapper" \
 	icon32x32="/usr/share/pixmaps/configure-ndiswrapper.xpm" \
 	icon16x16="/usr/share/pixmaps/configure-ndiswrapper-16.xpm" \
-	command="/usr/sbin/configure-ndiswrapper"
+	command="su-to-root -X -c /usr/sbin/configure-ndiswrapper"
