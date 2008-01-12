@@ -1,9 +1,5 @@
-configure-ndiswrapper (1.1.1) UNRELEASED; urgency=low
+configure-ndiswrapper (1.1.1) unstable; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
-  * NOT RELEASED YET
-
-  [ Joaquim Boura ]
   * changed category into Network
 
  -- Joaquim Boura <x-un-i@sidux.com>  Fri, 11 Jan 2008 19:25:05 +0100
