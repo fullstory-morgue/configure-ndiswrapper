@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.1.3) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 18 Jan 2008 23:11:00 +0100
+
 configure-ndiswrapper (1.1.2) unstable; urgency=low
 
   * update to debhelper compat 6.
