@@ -1,18 +1,11 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-
 Exec=su-to-root -X -c /usr/sbin/configure-ndiswrapper
-
 Icon=sidux-ndiswrapper
-Name[de]=Ndiswrapper konfigurieren
-Name[ru]=Конфигурация ndiswrapper
-Name[es]=Configuración de la Ndiswrapper
-Name=ndiswrapper configuration
-Comment[de]=Ndiswrapper konfigurieren
-Comment[ru]=Конфигурация ndiswrapper
-Comment[es]=Configuración de la Ndiswrapper
-Name[pt]=Configuração do Ndiswrapper
-Name[pt_BR]=Configuração do Ndiswrapper
-
+Name=configure-ndiswrapper
+GenericName=set up ndiswrapper
+GenericName[de]=Ndiswrapper konfigurieren
+GenericName[ru]=Конфигурация ndiswrapper
+GenericName[es]=Configuración de la Ndiswrapper
 Categories=Network;
