@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.1.7) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 20 Feb 2008 21:56:26 +0100
+
 configure-ndiswrapper (1.1.6) unstable; urgency=low
 
   * appease lintian and write (C) as © in debian/copyright.
