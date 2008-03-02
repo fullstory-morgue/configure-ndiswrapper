@@ -1,8 +1,12 @@
-configure-ndiswrapper (1.1.7) UNRELEASED; urgency=low
+configure-ndiswrapper (1.1.7) unstable; urgency=low
 
-  * NOT RELEASED YET
+  * add ndiswrapper-utils-1.9 to the dependencies, which depends on the
+    ndiswrapper-common package that is needed as a wrapper to
+    ndiswrapper-utils-x.y by configure-ndiswrapper. This also circumvents a
+    bug in linux-modules-{extra,sidux-main} that doesn't inherit module
+    dependencies into the built packages.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 20 Feb 2008 21:56:26 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Mar 2008 02:33:00 +0100
 
 configure-ndiswrapper (1.1.6) unstable; urgency=low
 
