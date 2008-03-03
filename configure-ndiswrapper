@@ -149,6 +149,7 @@ while true; do
 	if lsmod | grep -q -w ndiswrapper; then
 		if ssft_yesno "unload ndiswrapper driver" "$(warning)"; then
 			modprobe -r ndiswrapper
+			sed -i '/^ndiswrapper/d' /etc/modules
 		else
 			error "used"
 		fi
@@ -192,6 +193,7 @@ while true; do
 		NDIS_MODPROBE_RESULT=$(modprobe ndiswrapper 2>&1)
 		if [[ ${?} -eq 0 ]]; then
 			ndiswrapper -ma
+			grep -q '^ndiswrapper' /etc/modules || echo ndiswrapper >> /etc/modules
 			ssft_display_message "ndiswrapper installed" \
 				"The ndiswrapper kernel module is configured and ready to use."
 			break
