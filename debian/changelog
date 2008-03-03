@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.1.8) UNRELEASED; urgency=low
+configure-ndiswrapper (1.1.8) unstable; urgency=low
 
   * Manipulate /etc/modules on installation and removal of ndisrwapper. This
     seems more robust than the -ma -mi hacks the upstream tools provide.
