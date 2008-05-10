@@ -8,4 +8,5 @@ GenericName=set up ndiswrapper
 GenericName[de]=Ndiswrapper konfigurieren
 GenericName[ru]=Конфигурация ndiswrapper
 GenericName[es]=Configuración de la Ndiswrapper
+GenericName[pt]=Configuração do ndiswrapper
 Categories=Network;
