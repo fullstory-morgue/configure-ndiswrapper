@@ -1,14 +1,8 @@
-configure-ndiswrapper (1.1.10+nmu1) UNRELEASED; urgency=low
+configure-ndiswrapper (1.1.10) unstable; urgency=low
 
   * added pt translation.
 
  -- Joaquim Boura <x-un-i@sidux.com>  Sat, 10 May 2008 17:11:04 +0200
-
-configure-ndiswrapper (1.1.10) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
-
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 07 May 2008 00:57:02 +0200
 
 configure-ndiswrapper (1.1.9) unstable; urgency=low
 
