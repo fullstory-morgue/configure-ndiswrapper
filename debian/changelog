@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.1.12) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 08 Jun 2008 15:36:28 +0200
+
 configure-ndiswrapper (1.1.11) unstable; urgency=low
 
   * bump standards version to 3.8.0, no changes necessary.
