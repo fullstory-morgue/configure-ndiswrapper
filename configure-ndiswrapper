@@ -5,6 +5,8 @@
 #
 # Provide dialog frontend to ndis driver installation via ssft
 
+NDIS_INF_REGX='^(.*/)?(.+)\.[Ii][Nn][Ff]$'
+
 ###---------------------------------------------------------------###
 
 error() {
@@ -176,7 +178,7 @@ while true; do
 		error "abort"
 	fi
 
-	[[ ${NDIS_DRIVER} =~ '^(.*/)?(.+)\.[Ii][Nn][Ff]$' ]] || error "regx"
+	[[ ${NDIS_DRIVER} =~ ${NDIS_INF_REGX} ]] || error "regx"
 	NDIS_DRIVER_NAME=$(tr 'A-Z' 'a-z' <<< ${BASH_REMATCH[2]})
 
 	if [[ " ${NDIS_INSTALLED_DRIVERS[@]} " == *" ${NDIS_DRIVER_NAME} "* ]]; then
