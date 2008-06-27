@@ -1,4 +1,4 @@
-configure-ndiswrapper (1.2.0) UNRELEASED; urgency=low
+configure-ndiswrapper (1.2.0) unstable; urgency=low
 
   * Fix regular expression used to extract ndis driver name from .inf
     filename, regular expression is best kept in a variable to avoid quoting
