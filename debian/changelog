@@ -1,3 +1,9 @@
+configure-ndiswrapper (1.2.2) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 08 Dec 2008 21:23:18 +0100
+
 configure-ndiswrapper (1.2.1) unstable; urgency=low
 
   * make lintian happy and depend on ${misc:Depends}.
