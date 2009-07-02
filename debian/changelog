@@ -1,8 +1,12 @@
 configure-ndiswrapper (1.2.3) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 20 Feb 2009 15:32:16 +0100
+  [ Bernard Gray ]
+  * update art for 2009-02 -- do not release
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 02 Jul 2009 19:00:33 +1000
 
 configure-ndiswrapper (1.2.2) unstable; urgency=low
 
