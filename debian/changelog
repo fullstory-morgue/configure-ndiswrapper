@@ -2,6 +2,7 @@ configure-ndiswrapper (1.2.4) ORPHANED; urgency=low
 
   * NOT RELEASED YET
   * OPRHANED, ndiswrapper is essentially unmaintained.
+  * refresh SVG graphics, shut up inkscape's migration from old versions.
 
  -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 06 Dec 2009 03:07:16 +0100
 
